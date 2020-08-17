@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>l.ys</groupId>
+    <artifactId>123java</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>123java-netty</module>
+    </modules>
+
+    <properties>
+        <!-- 指定maven编译的java版本 -->
+        <maven-compiler-plugin.source.version>1.8</maven-compiler-plugin.source.version>
+        <maven-compiler-plugin.target.version>1.8</maven-compiler-plugin.target.version>
+        <!-- 指定子module是否使用此父类的maven-compiler-plugin -->
+        <maven-compiler-plugin.inherited>true</maven-compiler-plugin.inherited>
+        <!-- 指定编码格式 -->
+        <maven-compiler-plugin.encoding.version>UTF-8</maven-compiler-plugin.encoding.version>
+        <maven-compiler-plugin.debug>true</maven-compiler-plugin.debug>
+        <maven-compiler-plugin.debugLevel>lines,vars,source</maven-compiler-plugin.debugLevel>
+        <maven-compiler-plugin.optimize>true</maven-compiler-plugin.optimize>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <netty-all.version>4.1.49.Final</netty-all.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty-all.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.54</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <finalName>123java-study</finalName>
+        <pluginManagement>
+            <plugins>
+                <!-- maven-compiler-plugin -->
+                <plugin>
+                    <inherited>${maven-compiler-plugin.inherited}</inherited>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${maven-compiler-plugin.source.version}</source>
+                        <target>${maven-compiler-plugin.target.version}</target>
+                        <encoding>${maven-compiler-plugin.encoding.version}</encoding>
+                        <detail>true</detail>
+                        <debug>${maven-compiler-plugin.debug}</debug>
+                        <optimize>${maven-compiler-plugin.optimize}</optimize>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
